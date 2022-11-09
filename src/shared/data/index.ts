@@ -1,2 +1,2 @@
 export * from './protocols';
-export * from './use-cases';
+export * from './services';

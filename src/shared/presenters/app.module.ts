@@ -1,13 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { CatsModule } from '@/cats/presenters';
+import { CatsModule, LocalInfraModule } from '@/cats/presenters';
 
 import { AppController } from './app.controller';
+import { AppService } from '../data/services';
 
 @Module({
-  imports: [ConfigModule.forRoot(), CatsModule],
+  imports: [
+    ConfigModule.forRoot(),
+    CatsModule.withInfrastructure([LocalInfraModule]),
+  ],
   controllers: [AppController],
-  providers: [],
+  providers: [AppService],
 })
 export class AppModule {}

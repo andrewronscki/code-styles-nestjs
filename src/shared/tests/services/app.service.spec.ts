@@ -1,11 +1,11 @@
-import { HealthCheck } from '@/shared/data';
+import { AppService } from '@/shared/data';
 
 type SutTypes = {
-  sut: HealthCheck;
+  sut: AppService;
 };
 
 const makeSut = (): SutTypes => {
-  const sut = new HealthCheck();
+  const sut = new AppService();
 
   return {
     sut,
@@ -16,7 +16,7 @@ describe('HealthCheck: get the healthcheck application', () => {
   it('should be able return the healthcheck application', () => {
     const { sut } = makeSut();
 
-    const response = sut.execute();
+    const response = sut.healthCheck();
 
     expect(response.env).toBe('test');
     expect(typeof response.uptime).toBe('number');

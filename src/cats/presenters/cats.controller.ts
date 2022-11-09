@@ -6,28 +6,27 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { CreateCat, FindCats } from '../data';
+import { CatsService } from '../data';
 import { CatEntity } from '../domain';
-import { LocalCatsRepository } from '../infra';
 
 import { CreateCatDto } from './dtos';
 
 @ApiTags('cats')
 @Controller('cats')
 export class CatsController {
-  private catsRepository = new LocalCatsRepository();
+  constructor(private readonly catsService: CatsService) {}
 
   @ApiOperation({ summary: 'Create cat' })
   @ApiCreatedResponse({ description: 'created cat', type: CatEntity })
   @Post()
   async createCat(@Body() payload: CreateCatDto): Promise<CatEntity> {
-    return await new CreateCat(this.catsRepository).execute(payload);
+    return await this.catsService.create(payload);
   }
 
   @ApiOperation({ summary: 'Find cats' })
   @ApiOkResponse({ description: 'Found cats', type: CatEntity, isArray: true })
   @Get()
   async findCats(): Promise<CatEntity[]> {
-    return await new FindCats(this.catsRepository).execute();
+    return await this.catsService.findAll();
   }
 }

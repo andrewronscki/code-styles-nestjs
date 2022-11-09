@@ -5,6 +5,7 @@ module.exports = {
     '!<rootDir>/src/**/test/**/*',
     '!<rootDir>/src/**/infra/**/*',
     '!<rootDir>/src/**/domain/**/*',
+    '!<rootDir>/src/**/presenters/*.module.ts',
     '!<rootDir>/src/**/index.ts',
     '!<rootDir>/src/documentation.ts',
     '!<rootDir>/src/main.ts',

@@ -6,8 +6,8 @@ import { v4 } from 'uuid';
 
 import { AppModule } from '@/shared/presenters';
 
-import { CatsModule, CreateCatDto } from '@/cats/presenters';
-import { CreateCat, FindCats } from '@/cats/data';
+import { CreateCatDto } from '@/cats/presenters';
+import { CatsService } from '@/cats/data';
 import { CatEntity } from '@/cats/domain';
 
 describe('API access', () => {
@@ -15,7 +15,7 @@ describe('API access', () => {
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule, CatsModule],
+      imports: [AppModule],
     }).compile();
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ transform: true }));
@@ -32,7 +32,7 @@ describe('API access', () => {
         weight: 8,
       };
 
-      CreateCat.prototype.execute = jest.fn().mockImplementationOnce(
+      CatsService.prototype.create = jest.fn().mockImplementationOnce(
         async () =>
           new CatEntity({
             uid: v4(),
@@ -72,13 +72,13 @@ describe('API access', () => {
         weight: 13,
       });
 
-      FindCats.prototype.execute = jest
+      CatsService.prototype.findAll = jest
         .fn()
         .mockImplementationOnce(async () => [data1, data2]);
 
-      const { statusCode, body: response } = await request(app.getHttpServer())
-        .get('/cats')
-        .send();
+      const { statusCode, body: response } = await request(
+        app.getHttpServer(),
+      ).get('/cats');
 
       expect(statusCode).toBe(200);
       expect(response).toHaveLength(2);
@@ -87,13 +87,14 @@ describe('API access', () => {
     });
 
     it('200 success - empty list', async () => {
-      FindCats.prototype.execute = jest
+      CatsService.prototype.findAll = jest
         .fn()
         .mockImplementationOnce(async () => []);
 
-      const { statusCode, body: response } = await request(app.getHttpServer())
-        .get('/cats')
-        .send();
+      const { statusCode, body: response } = await request(
+        app.getHttpServer(),
+      ).get('/cats');
+
       expect(statusCode).toBe(200);
       expect(response).toHaveLength(0);
     });
