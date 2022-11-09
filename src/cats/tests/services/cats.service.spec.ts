@@ -1,7 +1,8 @@
 import { v4 } from 'uuid';
 
 import { CatsRepository, CatsService, CreateCatError } from '@/cats/data';
-import { CatEntity } from '@/cats/domain';
+import { CatEntity, ICreateCat } from '@/cats/domain';
+
 import { FakeCatsRepository } from '../infra';
 
 type SutTypes = {
@@ -39,7 +40,7 @@ describe('CatsService', () => {
     it('should be able create cat', async () => {
       const { sut, catsRepository } = makeSut();
 
-      const data: CatsService.CreateCat = {
+      const data: ICreateCat = {
         age: 1,
         breed: 'Persa',
         gender: 'M',

@@ -5,7 +5,7 @@ import {
   CatsRepositoryToken,
   CreateCatError,
 } from '@/cats/data';
-import { CatEntity } from '@/cats/domain';
+import { CatEntity, ICreateCat } from '@/cats/domain';
 @Injectable()
 export class CatsService {
   constructor(
@@ -13,7 +13,7 @@ export class CatsService {
     private readonly catsRepository: CatsRepository,
   ) {}
 
-  async create(data: CatsService.CreateCat): Promise<CatEntity> {
+  async create(data: ICreateCat): Promise<CatEntity> {
     const createdCat = await this.catsRepository.create(data);
     if (!createdCat) throw new CreateCatError();
 
@@ -24,15 +24,5 @@ export class CatsService {
     const foundCats = await this.catsRepository.findAll();
 
     return foundCats;
-  }
-}
-
-export namespace CatsService {
-  export interface CreateCat {
-    age: number;
-    breed: string;
-    gender: 'M' | 'F';
-    name: string;
-    weight: number;
   }
 }

@@ -6,9 +6,9 @@ import { v4 } from 'uuid';
 
 import { AppModule } from '@/shared/presenters';
 
-import { CreateCatDto } from '@/cats/presenters';
 import { CatsService } from '@/cats/data';
 import { CatEntity } from '@/cats/domain';
+import { CreateCatDto } from '@/cats/presenters';
 
 describe('API access', () => {
   let app: INestApplication;
