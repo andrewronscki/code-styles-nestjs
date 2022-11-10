@@ -66,7 +66,7 @@ $ npm run test:cov
 
 ## Architecture
 
-Dentro da arquitetura monolítica definimos utilizar um pouco do **Domain-Driving Design** e um pouco do **Clean Architecture** tragos pelas literaturas de _Robert C. Martin - Clean Architecture_ e de _Eric Evans - Domain-Driven Design_, dividiremos as camadas das aplicações em:
+Para compor a arquitetura do projeto, decidimos utilizar conceitos de **Domain-Driving Design** e do **Clean Architecture** tragos pelas literaturas de _Robert C. Martin - Clean Architecture_ e de _Eric Evans - Domain-Driven Design_, dividiremos as camadas das aplicações em:
 
 - **presenters** camada em azul que é a mais superficial da imagem abaixo, camada onde terá os controllers da aplicação;
 - **infra** camada em verde que será responsável por se conectar com o banco de dados, ou com api’s externas;
