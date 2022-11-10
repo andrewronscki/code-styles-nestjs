@@ -29,7 +29,13 @@
 ## Installation
 
 ```bash
-$ npm install
+$ yarn
+```
+
+or
+
+```bash
+npm install
 ```
 
 ## Running the app
@@ -58,16 +64,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Architecture
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Dentro da arquitetura monolítica definimos utilizar um pouco do **Domain-Driving Design** e um pouco do **Clean Architecture** tragos pelas literaturas de _Robert C. Martin - Clean Architecture_ e de _Eric Evans - Domain-Driven Design_, dividiremos as camadas das aplicações em:
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- **presenters** camada em azul que é a mais superficial da imagem abaixo, camada onde terá os controllers da aplicação;
+- **infra** camada em verde que será responsável por se conectar com o banco de dados, ou com api’s externas;
+- **data** camada em vermelho que será responsável por conter os casos de usos da aplicação;
+- **domain** camada em amarelo que será responsável por conter as entidades, interfaces e tipos da aplicação.
+<p align="center">
+  <img src="https://teste-andrewronscki.s3.amazonaws.com/archtecture.png" width="600" alt="Archtecture" />
+</p>
