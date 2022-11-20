@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
-import { CatsRepository, CatsService, CreateCatError } from '@/cats/data';
-import { CatEntity, ICreateCat } from '@/cats/domain';
+import { CatsService, CreateCatError } from '@/cats/data';
+import { CatEntity, CatsRepository, ICreateCat } from '@/cats/domain';
 
 import { FakeCatsRepository } from '../infra';
 

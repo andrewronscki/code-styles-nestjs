@@ -1,5 +1,4 @@
-import { CatsRepository } from '@/cats/data';
-import { ICreateCat, CatEntity } from '@/cats/domain';
+import { CatEntity, CatsRepository, ICreateCat } from '@/cats/domain';
 import { Injectable } from '@nestjs/common';
 import { v4 } from 'uuid';
 
