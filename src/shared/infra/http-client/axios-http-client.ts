@@ -5,7 +5,7 @@ import {
   HttpResponse,
   HttpClient,
   HttpStatusCode,
-} from '../../data';
+} from '@/shared/domain';
 
 export class AxiosHttpClient implements HttpClient {
   async post<T>(url: string, body: any): Promise<HttpResponse<T>> {
