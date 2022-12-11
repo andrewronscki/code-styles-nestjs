@@ -15,6 +15,7 @@ export class CreateCat {
     @Inject(CatsRepositoryToken)
     private readonly catsRepository: CatsRepository,
   ) {}
+
   async execute(data: ICreateCat): Promise<CatEntity> {
     const createdCat = await this.catsRepository.create(data);
     if (!createdCat) throw new CreateCatError();
