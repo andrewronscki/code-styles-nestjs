@@ -1,11 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 
-import {
-  CatEntity,
-  CatsRepository,
-  CatsRepositoryToken,
-  ICreateCat,
-} from '@/cats/domain';
+import { CatEntity, ICreateCat } from '@/cats/domain';
+import { CatsRepository, CatsRepositoryToken } from '@/cats/data';
 
 import { CreateCatError } from '../errors';
 

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { CatsRepositoryToken } from '../domain';
+import { CatsRepositoryToken } from '../data';
 import { LocalCatsRepository } from '../infra';
 
 @Module({

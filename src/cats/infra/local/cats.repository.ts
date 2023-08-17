@@ -1,6 +1,9 @@
-import { CatEntity, CatsRepository, ICreateCat } from '@/cats/domain';
 import { Injectable } from '@nestjs/common';
+
 import { v4 } from 'uuid';
+
+import { CatEntity, ICreateCat } from '@/cats/domain';
+import { CatsRepository } from '@/cats/data';
 
 @Injectable()
 export class LocalCatsRepository implements CatsRepository {

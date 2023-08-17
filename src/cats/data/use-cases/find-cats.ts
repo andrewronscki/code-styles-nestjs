@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 
-import { CatEntity, CatsRepository, CatsRepositoryToken } from '@/cats/domain';
+import { CatEntity } from '@/cats/domain';
+import { CatsRepository, CatsRepositoryToken } from '@/cats/data';
 
 @Injectable()
 export class FindCats {

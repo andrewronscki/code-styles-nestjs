@@ -1,4 +1,5 @@
-import { CatEntity, CatsRepository, ICreateCat } from '@/cats/domain';
+import { CatEntity, ICreateCat } from '@/cats/domain';
+import { CatsRepository } from '@/cats/data';
 
 export class FakeCatsRepository implements CatsRepository {
   async create(data: ICreateCat): Promise<CatEntity> {
